@@ -1,7 +1,7 @@
 {
   "name": "hubot-cataas",
   "description": "CATAAS is one of the cutest hubot script!",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "Julien Bianchi",
     "email": "contact@jubianchi.fr"
