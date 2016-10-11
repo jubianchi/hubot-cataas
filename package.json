@@ -1,0 +1,27 @@
+{
+  "name": "hubot-cataas",
+  "description": "CATAAS is one of the cutest hubot script!",
+  "version": "0.1.0",
+  "author": {
+    "name": "Julien Bianchi",
+    "email": "contact@jubianchi.fr"
+  },
+  "license": "MIT",
+  "keywords": [
+    "hubot",
+    "hubot-scripts",
+    "cats"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jubianchi/hubot-cataas.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jubianchi/hubot-cataas/issues"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "hubot": "2.x"
+  },
+  "main": "src/cataas.coffee",
+}
