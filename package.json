@@ -23,5 +23,16 @@
   "peerDependencies": {
     "hubot": "2.x"
   },
-  "main": "index.coffee"
+  "devDependencies": {
+    "chai": "*",
+    "coffee-script": "^1.11.1",
+    "hubot": "2.x",
+    "mocha": "*",
+    "sinon": "*",
+    "sinon-chai": "*"
+  },
+  "main": "index.coffee",
+  "scripts": {
+    "test": "mocha --require coffee-script/register test/*.coffee"
+  }
 }

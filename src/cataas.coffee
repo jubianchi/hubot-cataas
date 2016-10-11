@@ -1,6 +1,9 @@
 # Description:
 #   A script to interact with CATAAS and send cats everywhere
 #
+# Configuration
+#   HUBOT_CATAAS_BASE_URL: Optional. Allows you to specify the base URL for the CATAAS API.
+#
 # Commands:
 #   hubot cat me - Shows a random cat image
 #   hubot cat bomb [me] - Shows five random cats
@@ -15,51 +18,51 @@
 #   hubot <filter> cat says me <text> - Shows a random <filter> cat saying <text>
 
 module.exports = (robot) ->
+  @hash = ->
+    Math.random().toString(36).substring(2, 12)
 
-  hash = () -> Math.random().toString(36).substring(7)
+  @url = (url = '', args...) =>
+    base = process.env.HUBOT_CATAAS_BASE_URL or "http://cataas.com"
+    args = args.map (arg) -> encodeURI(arg)
 
-  url = (url) -> "#{url}##{hash()}"
+    "#{base.replace(/\/$/, '')}/cat#{@replace(url, args...)}##{@hash()}"
 
-  robot.hear /cat me/i, (msg) ->
-    msg.send url "http://cataas.com/cat"
+  @repeat = (times, code) ->
+    times = parseInt(times, 10) || 5
 
-  robot.hear /cat bomb(?: me| (\d*))?/i, (msg) ->
-    howMany = msg.match[1] or 5
+    while times > 0
+      code()
+      times--
 
-    while (howMany > 0)
-      msg.send url "http://cataas.com/cat"
-      --howMany
+  @replace = (string, args...) ->
+    string.replace /{(\d+)}/g, (match, number) ->
+      return args[number - 1] if number > 0 && number - 1 < args.length
 
-  robot.respond /(.+) cat me/i, (msg) ->
-    filter = msg.match[1]
+      match
 
-    msg.send url "http://cataas.com/cat/#{encodeURI(filter)}"
+  commands = [
+    [/cat me/i, (msg) => msg.send @url()],
+    [
+      /cat bomb(?: me| (\d+))?/i,
+      (msg) => @repeat msg.match[1], => msg.send @url()
+    ],
+    [/(.+) cat me/i, (msg) => msg.send @url "/{1}", msg.match[1]],
+    [
+      /(.+) cat bomb(?: me| (\d*))?/i,
+      (msg) => @repeat msg.match[2], => msg.send @url "/{1}", msg.match[1]
+    ],
+    [/cat animate me/i, (msg) => msg.send @url "/gif"],
+    [
+      /cat animate bomb(?: me| (\d*))?/i,
+      (msg) => @repeat msg.match[1], => msg.send @url "/gif"
+    ],
+    [/cat says? me (.+)/i, (msg) => msg.send @url "/says/{1}", msg.match[1]],
+    [
+      /(.+) cat says? me (.+)/i,
+      (msg) => msg.send @url "/{1}/says/{2}", msg.match[1], msg.match[2]
+    ]
+  ]
 
-  robot.respond /(.+) cat bomb(?: me| (\d*))?/i, (msg) ->
-    filter = msg.match[1]
-    howMany = msg.match[2] or 5
+  robot.respond command, handler for _, [command, handler] of commands
 
-    while (howMany > 0)
-      msg.send url "http://cataas.com/cat/#{encodeURI(filter)}"
-      --howMany
-
-  robot.hear /cat animate me/i, (msg) ->
-    msg.send url "http://cataas.com/cat/gif"
-
-  robot.hear /cat animate bomb(?: me| (\d*))?/i, (msg) ->
-    howMany = msg.match[1] or 5
-
-    while (howMany > 0)
-      msg.send url "http://cataas.com/cat/gif"
-      --howMany
-
-  robot.hear /cat says? me (.+)/, (msg) ->
-    text = msg.match[1]
-
-    msg.send url "http://cataas.com/cat/says/#{text}"
-
-  robot.respond /(.+) cat says? me (.+)/, (msg) ->
-    filter = msg.match[1]
-    text = msg.match[2]
-
-    msg.send url "http://cataas.com/cat/#{filter}/says/#{text}"
+  @
