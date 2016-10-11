@@ -1,6 +1,6 @@
 # hubot-cataas
 
-CATAAS is one of the most important hubot script!
+CATAAS is one of the cutest hubot script!
 
 ![CATAAS][cat]
 
