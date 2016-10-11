@@ -23,5 +23,5 @@
   "peerDependencies": {
     "hubot": "2.x"
   },
-  "main": "src/cataas.coffee",
+  "main": "src/cataas.coffee"
 }

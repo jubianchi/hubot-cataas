@@ -2,7 +2,7 @@
 
 CATAAS is one of the most important hubot script!
 
-![CATAAS](http://cataas.com/cat/says/I%20can%20haz%Hubot "CATAAS")
+![CATAAS][cat]
 
 See [`src/cataas.coffee`](src/cataas.coffee) for full documentation.
 
@@ -36,3 +36,6 @@ hubot>> http://cataas.com/cat#z8ghev1clfa6lth85mi
 ## License
 
 hubot-cataas is released under the MIT License. See the bundled [LICENSE](LICENSE) file for details.
+
+
+[cat]: http://cataas.com/cat/says/I_can_haz_Hubot "CATAAS"
