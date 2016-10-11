@@ -58,7 +58,7 @@ module.exports = (robot) ->
 
     msg.send url "http://cataas.com/cat/says/#{text}"
 
-  robot.hear /(.+) cat says? me (.+)/, (msg) ->
+  robot.respond /(.+) cat says? me (.+)/, (msg) ->
     filter = msg.match[1]
     text = msg.match[2]
 
