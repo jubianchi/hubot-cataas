@@ -33,6 +33,10 @@ hubot>> http://cataas.com/cat#2fwb7dcy7sxm9v3b1q0k9
 hubot>> http://cataas.com/cat#z8ghev1clfa6lth85mi
 ```
 
+## About
+
+More information about CATAAS API at [cataas.com](http://cataas.com)
+
 ## License
 
 hubot-cataas is released under the MIT License. See the bundled [LICENSE](LICENSE) file for details.
