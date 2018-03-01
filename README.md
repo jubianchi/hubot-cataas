@@ -42,4 +42,4 @@ More information about CATAAS API at [cataas.com](http://cataas.com)
 hubot-cataas is released under the MIT License. See the bundled [LICENSE](LICENSE) file for details.
 
 
-[cat]: http://cataas.com/cat/says/I_can_haz_Hubot "CATAAS"
+[cat]: https://cataas.com/cat/says/I_can_haz_Hubot "CATAAS"
