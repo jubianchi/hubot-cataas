@@ -1,5 +1,7 @@
 # hubot-cataas
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/jubianchi/hubot-cataas.svg)](https://greenkeeper.io/)
+
 CATAAS is one of the cutest hubot script!
 
 ![CATAAS][cat]
