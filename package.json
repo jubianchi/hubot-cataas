@@ -26,7 +26,7 @@
   "devDependencies": {
     "chai": "*",
     "coffee-script": "^1.11.1",
-    "hubot": "2.x",
+    "hubot": "^3.1.1",
     "mocha": "*",
     "sinon": "*",
     "sinon-chai": "*"
